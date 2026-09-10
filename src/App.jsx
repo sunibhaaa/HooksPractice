@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-  const [name, setName] = useState("");
+  const [details, setDetails] = useState({ counter: 0, name: "" });
 
   function increaseCounter() {
-    setCounter(counter + 1)
+    setDetails((prev) => ({
+      ...prev,
+      counter: prev.counter + 1
+    }));
   }
-
+  console.log(details)
   return (
     <div>
-      <input type="text" onChange={e => setName(e.target.value)} />
-      <h1>{name} has been clicked {counter} times!</h1>
+      <input type="text" onChange={e => e.target.value} />
+      <h1>{details.name} has been clicked {details.counter} times!</h1>
       <button onClick={increaseCounter}>Increase</button>
     </div>
   );
