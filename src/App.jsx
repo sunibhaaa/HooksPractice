@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
-  const [details, setDetails] = useState({ counter: 0, name: "" });
+  const [count, setCount] = useState(0);
 
-  function increaseCounter() {
-    setDetails((prev) => ({
-      ...prev,
-      counter: prev.counter + 1
-    }));
-  }
-  console.log(details)
+  useEffect(() => {
+    document.title = `${count} new Messages!`
+  });
   return (
     <div>
-      <input type="text" onChange={e => e.target.value} />
-      <h1>{details.name} has been clicked {details.counter} times!</h1>
-      <button onClick={increaseCounter}>Increase</button>
+      <h3>{count} new Messages!</h3>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
     </div>
   );
 }
