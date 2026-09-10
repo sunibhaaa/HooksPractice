@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { createContext } from "react";
+import MainComponent from "./components/MainComponent"
+
+export const LoginContext = createContext();
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log('Run useEffect', count);
-
-    return () => {
-      console.log('Clean up', count);
-    }
-  }, [count])
   return (
-    <>
-      <h3>Count {count}</h3>
-      <button onClick={() => setCount(count + 1)}>Increase</button>
-    </>
-  );
+    <LoginContext.Provider value={true}>
+      <div>
+        <MainComponent />
+      </div>
+    </LoginContext.Provider>
+  )
 }
 export default App; 
