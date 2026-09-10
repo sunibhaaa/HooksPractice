@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 const App = () => {
-  const [time, setTime] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(time + 1);
-    }, 1000);
+    console.log('Run useEffect', count);
 
     return () => {
-      clearInterval(timer);
+      console.log('Clean up', count);
     }
-  });
-
+  }, [count])
   return (
-    <div>
-      <h3>{time} in seconds</h3>
-    </div>
+    <>
+      <h3>Count {count}</h3>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    </>
   );
 }
-export default App;
+export default App; 
